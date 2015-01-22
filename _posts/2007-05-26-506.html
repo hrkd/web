@@ -1,0 +1,38 @@
+---
+layout: post
+title: よく使うwordpressテンプレートタグ
+date: 2007-05-26 22:08:50.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: よく使うwordpressテンプレートタグ
+  _id: '506'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295808832'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><strong>bloginfo</strong><br />
+<code>&lt;?php bloginfo(XXXXX'); ?&gt;</code><br />
+name:ブログの名称<br />
+description:ブログの紹介文<br />
+url:ブログのURL<br />
+rdf_url:RDF/RSS1.0フィードのURL<br />
+template_directory:テンプレートのURL<br />
+stylesheet_url:スタイルシートのURL</p>
+<p><strong>インクルード</strong><br />
+<code>&lt;?php get_header(); ?&gt;<br />
+&lt;?php get_footer(); ?&gt;<br />
+&lt;?php get_sidebar(); ?&gt;<br />
+&lt;?php get_comments_template(); ?&gt;<br />
+&lt;?php get_header(); ?&gt;<br />
+&lt;?php include (TEMPLATEPATH . '/header2.php'); ?&gt;</code></p>

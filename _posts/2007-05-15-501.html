@@ -1,0 +1,28 @@
+---
+layout: post
+title: actionscriptのインクルード
+date: 2007-05-15 15:39:24.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: actionscriptのインクルード
+  _id: '501'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1296018920'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><code>#include "as/abc.as"/*読み込み*/</code><br />
+こうだと、エラーでちゃうのね。<br />
+<code>/*読み込み*/<br />
+#include "as/abc.as"</code><br />
+とかする。とにかく、#includeの後ろっかわには何も書いちゃいけないんだ。</p>

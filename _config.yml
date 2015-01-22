@@ -1,0 +1,55 @@
+# Build settings
+markdown: redcarpet
+highlighter: pygments
+
+# Site settings
+title: "hrkd"
+description: > # this means to ignore newlines until "email:"
+   This blog is written by front end web engineer who lived in Tokyo.
+
+email: hiroki@hrkd.net
+#blog logo
+#logo: "/assets/images/df_logo.jpg"
+logo: "/assets/images/hrkd.svg"
+# blog cover
+cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
+
+name: 'Hiroki Kodama'
+author: 'Hiroki Kodama'
+author_image: "/assets/images/author.jpg"
+
+paginate:	5
+
+url: "http://hrkd.net" # the base hostname & protocol for your site
+baseurl: ""
+
+permalink: "/:year/:month/:day/id_:title"
+# social icons and sharing options
+social:
+  - icon:	twitter
+    url:	https://twitter.com/hiroking0716
+    desc: Follow me on twitter
+    share_url: http://twitter.com/share
+    share_title: ?text=
+    share_link: "&amp;url="
+
+#  - icon:	facebook
+#    url:	https://facebook.com/???
+#    desc: Connect with me facebook
+#    share_url: //www.facebook.com/sharer.php
+#    share_title: ?t=
+#    share_link: "&amp;u="
+
+  - icon:	github
+    url:	https://github.com/hrkd
+    desc:	Fork me on github
+    share_url:
+    share_title:
+    share_link:
+
+#  - icon:	google-plus
+#    url:	https://google.com/???
+#    desc:	Add me on google+
+#    share_url:
+#    share_title:
+#    share_link:

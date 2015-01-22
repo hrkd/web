@@ -1,0 +1,42 @@
+---
+layout: post
+title: cssの切り替えjavascript
+date: 2008-10-15 10:22:31.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: cssの切り替えjavascript
+  _id: '409'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295952650'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><!--more--><br />
+［この記事は、lab.hrkd.netから移動したものです］<br />
+<a href="http://chalow.net/">たつをの ChangeLog</a>さんの<a href="http://chalow.net/2005-03-24-3.html">JavaScriptでCSSを動的切り替え</a>より。</p>
+<p><code><br />
+&lt;link id="basicStyle" rel="stylesheet" href ="diary.css"<br />
+type="text/css" /&gt;<br />
+[...]<br />
+&lt;body&gt;<br />
+[...]<br />
+Change CSS<br />
+&lt;input type="button" value="diary.css"<br />
+onclick="document.getElementById('basicStyle').href=this.value"/&gt;<br />
+&lt;input type="button" value="debug.css"<br />
+onclick="document.getElementById('basicStyle').href=this.value"/&gt;<br />
+&lt;input type="button" value="css off"<br />
+onclick="document.getElementById('basicStyle').href=''"/&gt;&lt;/body&gt;<br />
+</code></p>
+<blockquote><p>切り替えじゃなくて、単に CSS を on/off するには styleSheet オブジェクトの disabled プロパティを使うのが正統派みたい。</p></blockquote>
+<p>ということみたいです。なるほど、なるほど。</p>

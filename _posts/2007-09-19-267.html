@@ -1,0 +1,50 @@
+---
+layout: post
+title: MySQLサーバーに接続
+date: 2007-09-19 17:42:14.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: MySQLサーバーに接続
+  _id: '267'
+  tags: ''
+  _geo_location: ','
+  ratings_users: '0'
+  ratings_score: '0'
+  ratings_average: '0'
+  _aioseop_keywords: ''
+  wp2t_publish_twitted: '1'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295982779'
+  btcnew_comment_summary: a:0:{}
+  btcnew_comment_counts: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>メモメモ。<br />
+<!--more--><br />
+<code>&lt;?php<br />
+$username = &quot;ユーザー名&quot;;<br />
+$password = &quot;パスワード&quot;;<br />
+$host     = &quot;大体は「localhost」&quot;;<br />
+$database = &quot;データベース名&quot;;<br />
+$mysql = mysql_connect($host,$username,$password);<br />
+if(mysql_select_db($database, $mysql)) {<br />
+print &quot;OK&quot;;<br />
+}else {<br />
+print &quot;NG&quot;;<br />
+}<br />
+/*データを表示する例*/<br />
+$result = mysql_query('SQL文', $mysql);<br />
+while ($data = mysql_fetch_array($result)) {<br />
+  echo $data['フィールド名など'] . &quot;&lt;br&gt;\n&quot;;<br />
+}<br />
+?&gt;</code></p>

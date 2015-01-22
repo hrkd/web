@@ -1,0 +1,26 @@
+---
+layout: post
+title: 正規表現で並び替え
+date: 2009-10-29 21:29:07.000000000 +09:00
+categories:
+- memo
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: 正規表現で並び替え
+  _id: '536'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295994749'
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><code>([A-Z])([A-Z])([A-Z])([A-Z])</code></p>
+<p><code>$3$4_$1$2</code></p>
+<p>()カッコで括った条件で検索されたワードは置換の際に$Xで使用することができる。上記の例で「ABCD」を置換した場合「CD_AB」となる。<br />
+べんりね。</p>

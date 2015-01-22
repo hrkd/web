@@ -1,0 +1,28 @@
+---
+layout: post
+title: '@importでmediatype指定'
+date: 2007-05-10 18:16:48.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: '@importでmediatype指定'
+  _id: '499'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1296015689'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>なるべくhtmlを簡略化するために、cssファイル内でメディアタイプによる分岐をするのが、スマートかなと。</p>
+<blockquote><p>後ろにメディアタイプを指定して、そのメディア専用のCSSファイルとしてインポートする事も可能です。このように書きます。<br />
+<code>@import "klankey.css" print; /* printメディアの場合にのみ適用 */</code><br />
+この場合、メディアタイプがprintの場合だけ、そのCSSファイルをインポートします。以下のようにして、複数のメディアタイプを指定する事も可能です。 </p></blockquote>
+<p>こちらの情報は<a href="http://www6.plala.or.jp/go_west/nextcss/ref/slctr/at_rule.htm#media">@規則 一覧 - CSS Dencitie</a>より</p>

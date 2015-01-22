@@ -1,0 +1,38 @@
+---
+layout: post
+title: .htaccessで携帯振り分け
+date: 2007-09-11 11:45:35.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: .htaccessで携帯振り分け
+  _id: '264'
+  tags: ''
+  ratings_users: '0'
+  ratings_score: '0'
+  ratings_average: '0'
+  _aioseop_keywords: ''
+  _geo_location: ','
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295946563'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>メモメモ。<br />
+<!--more--><br />
+<code>RewriteEngine On<br />
+RewriteCond %{HTTP_USER_AGENT} ^(DoCoMo|KDDI|DDIPOKET|UP¥.Browser|J-PHONE|Vodafone|SoftBank)<br />
+RewriteRule ^$ /mb/ [R]</code></p>
+<p>で、http://www.exam.com/がホームだった場合、http://www.exam.com/mb/に飛ぶと。</p>
+<p>参考記事：<br />
+<a href="http://www.affiliateportal.net/mobile/000856.html">アフィリエイト・ポータルネット｜PCサイトを携帯に対応させるまとめ</a><br />
+<a href="http://blog.n-two.jp/?eid=626802">Blog N-two | .htaccessでの携帯サイト振り分け方法</a></p>

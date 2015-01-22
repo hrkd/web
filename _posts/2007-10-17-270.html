@@ -1,0 +1,40 @@
+---
+layout: post
+title: ダイナミックテキストにマスクレイヤーはかけられない。
+date: 2007-10-17 19:50:28.000000000 +09:00
+categories:
+- memo
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: ダイナミックテキストにマスクレイヤーはかけられない。
+  _id: '270'
+  tags: ''
+  _geo_location: ','
+  ratings_users: '0'
+  ratings_score: '0'
+  ratings_average: '0'
+  _aioseop_keywords: ''
+  wp2t_publish_twitted: '1'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295965992'
+  btcnew_comment_summary: a:0:{}
+  btcnew_comment_counts: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>メモメモ。表題の通り、Flashにおいてダイナミックテキストを設定する際は、マスクをかけてしまうとテキストが消えてしまいます。解決法は以下の通り、<br />
+<!--more--><br />
+<code>//メインのタイムラインの１コマ目<br />
+maskedMc.setMask(maskMc);</code></p>
+<p>つまり、マスクをかけたいMC.setMask(マスクにするMC);<br />
+と書けば、ダイナミックテキストを含んだMCも問題なく表示できるようです。</p>
+<p>参考記事：<a href="http://www.fumiononaka.com/TechNotes/Flash/FN0502002.html">FN0502002 - デバイスフォントが表示されない - Flash : テクニカルノート</a><br />
+ちなみに、ダイナミックテキストを含むMCを回転させたりするときは、フォントのアウトライン情報を記憶させる必要がある模様。</p>
