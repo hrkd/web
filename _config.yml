@@ -5,7 +5,7 @@ highlighter: pygments
 # Site settings
 title: "hrkd"
 description: > # this means to ignore newlines until "email:"
-   This blog is written by front end web engineer who lived in Tokyo.
+   This blog is written by front end web engineer who live in Tokyo.
 
 email: hiroki@hrkd.net
 #blog logo
