@@ -1,0 +1,26 @@
+---
+layout: post
+title: FFFTPで削除できない!
+date: 2007-05-10 10:53:05.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: FFFTPで削除できない!
+  _id: '498'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295878703'
+  btcnew_comment_summary: a:0:{}
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><a href="http://www.hereticanthem.com/">hereticanthem co.,ltd.さん</a>の<a href="http://www.hereticanthem.com/webtips/215/">WebTips : FTPクライアントで削除できないファイル、フォルダ </a>より。</p>
+<blockquote><p>「ホストの設定」→[高度のタブ]を選択、「LISTコマンドでファイルの一覧を取得（L）」と「NLST -Rを使って高速に再帰検索（N）」の２項目のチェックを外します。</p></blockquote>
+<p>これで、削除できんかったフォルダやファイルもばっちりだった。どうも、Macで制作しているから、「.AppleDouble」とか「.DS_Store」あたりが悪さしてるんじゃないかなと。FFFTPの「オプション」→「環境設定」→「表示」→「隠し属性のファイル、フォルダは表示しない」は.htaccessいじる時以外はチェックをしておくべきか。</p>

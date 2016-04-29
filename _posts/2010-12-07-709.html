@@ -1,0 +1,29 @@
+---
+layout: post
+title: MYSQLでテキストを一括置換
+date: 2010-12-07 17:19:56.000000000 +09:00
+categories:
+- memo
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: MYSQLでテキストを一括置換
+  _id: '709'
+  _edit_last: '1'
+  _topsy_cache_timestamp: '1295650253'
+  _topsy_long_url: http://www.hrkd.net/2010/12/07/id_709
+  topsy_short_url: http://bit.ly/hC79Ku
+  _wp_old_slug: ''
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p><!--more--><br />
+<code>UPDATE `wp_posts` SET post_content=REPLACE (post_content,"ターゲットの文字列","置換したい文字列");</code></p>
+<p>たとえばwordpressのデータベースの中の、記事本文を全文検索して置換した場合、上のようなかんじ。</p>

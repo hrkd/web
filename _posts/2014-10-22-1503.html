@@ -1,0 +1,93 @@
+---
+layout: post
+title: yosemiteでapacheのvhost設定をする（ついでにRubyも動くようにしとく）
+date: 2014-10-22 11:42:44.000000000 +09:00
+categories:
+- memo
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: yosemiteでapacheのvhost設定をする（ついでにRubyも動くようにしとく）
+  _id: '1503'
+  _wpcom_is_markdown: '1'
+  _edit_last: '1'
+  _thumbnail_id: '1506'
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>ほぼクリーンなyosemiteで、apacheを立ち上げてvhostも設定した時に最初にしたこと。</p>
+<!--more-->
+<h2>まずは設定ファイルの場所</h2>
+<h3>apache設定ファイル</h3>
+<p>/private/etc/apache2/httpd.conf</p>
+<h3>vhost用のインクルード設定ファイル</h3>
+<p>/private/etc/apache2/extra/httpd-vhosts.conf</p>
+<h3>hostファイル</h3>
+<p>/private/etc/hosts</p>
+<h2>やったこと</h2>
+<h3>vhosts.confを読み込み</h3>
+<p>httpd.conf499行目付近の</p>
+<pre><code>#Include /private/etc/apache2/extra/httpd-vhosts.conf
+</code></pre>
+<p>のコメントを外す</p>
+<h3>vhostsの設定ファイルを編集</h3>
+<p>httpd-vhosts.confを編集する。最低限以下のような感じ？</p>
+<pre><code># domainnameと/path/to/your/docs/は各自環境で読み替え
+
+NameVirtualHost *:80
+
+&lt;VirtualHost *:80&gt;
+    DocumentRoot "/path/to/your/docs/"
+    ServerName domainnameA
+    &lt;Directory "/path/to/your/docs/"&gt;
+        Require all granted
+        DirectoryIndex index.html
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    DocumentRoot "/path/to/your/another/docs/"
+    ServerName domainnameB
+    &lt;Directory "/path/to/your/another/docs/"&gt;
+        Require all granted
+        DirectoryIndex index.html
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>ここ参考にさせていただきました。</p>
+<p><a href="http://blog.77jp.net/authz_coreerror-apache-2-4-error">http://blog.77jp.net/authz_coreerror-apache-2-4-error</a><br />
+<a href="http://www.adminweb.jp/apache/virtual/index2.html">http://www.adminweb.jp/apache/virtual/index2.html</a></p>
+<h3>hostsを編集</h3>
+<pre><code>127.0.0.1 localhost
+# 以下を追記。domainnameは各自環境で読み替え
+127.0.0.1 domainnameA
+127.0.0.1 domainnameB
+</code></pre>
+<h2>で、apache再起動</h2>
+<pre><code>sudo apachectl restart
+</code></pre>
+<h2>Ruby動かす</h2>
+<h3>モジュールの読み込み</h3>
+<p>httpd.conf157行目付近の</p>
+<pre><code>#Loadmodule cgi_module libexec/apache2/mod_cgi.so
+</code></pre>
+<p>のコメントを外す</p>
+<h3>vhosts.confに以下を追記</h3>
+<pre><code>    &lt;Directory "/path/to/your/docs/"&gt;
+        Require all granted
+        #以下追記
+        DirectoryIndex index.html index.rb
+        Options +ExecCGI
+        AddHandler cgi-script .rb
+    &lt;/Directory&gt;
+</code></pre>
+<p>同じくapache再起動は忘れずに。</p>
+<hr />
+<p>すべて、「とりあえず動かす」レベルなので、必要な設定はそれぞれあとから追記すれば良いかなと。</p>

@@ -1,0 +1,69 @@
+---
+layout: post
+title: MT4でjQueryのpagerを使う
+date: 2009-11-19 13:58:23.000000000 +09:00
+categories:
+- web-dev
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _title: MT4でjQueryのpagerを使う
+  _id: '483'
+  _edit_last: '1'
+  checkbox_common: 'true'
+  radio_common: 10-19
+  select_common: Low
+  checkbox_post: 'true'
+  radio_post: 10-19
+  select_post: Low
+  _topsy_cache_timestamp: '1295982698'
+author:
+  login: admin
+  email: hiroki@hrkd.net
+  display_name: admin
+  first_name: ''
+  last_name: ''
+---
+<p>MTのテンプレートは以下をまるまるコピーして使えます。テンプレートではエントリー6件で1ページを区切っています。<br />
+<a href="http://code.google.com/p/jqueryjs/downloads/detail?name=jquery-1.3.2.min.js&amp;downloadBtn=">jQuery</a>と<a href="http://rikrikrik.com/jquery/pager/">jQuery pager</a>はダウンロードしてくださいね。<br />
+<!--more--><br />
+<code><br />
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;<br />
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;<br />
+&lt;head&gt;<br />
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;<br />
+&lt;meta name="description" content="something" /&gt;<br />
+&lt;meta name="keyword" content="something" /&gt;<br />
+&lt;script src="./jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;<br />
+&lt;script src="./jquery.pager.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;<br />
+&lt;script&gt;<br />
+$(document).ready(function(){<br />
+$("#entries").pager(".pager_section");<br />
+});<br />
+&lt;/script&gt;<br />
+&lt;title&gt;jquery.pager-mt&lt;/title&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+&lt;mtignore&gt;エントリー6つで括る&lt;/mtignore&gt;<br />
+&lt;mtsetVar name="count" value="1"&gt;<br />
+&lt;div id="entries"&gt;<br />
+&lt;mtentries&gt;&lt;mtentriesheader&gt;<br />
+&lt;div class="pager_section"&gt;&lt;/mtentriesheader&gt;<br />
+&lt;div class="entry"&gt;<br />
+&lt;mtignore&gt;ここに内容を挿入&lt;/mtignore&gt;<br />
+&lt;mt:Entrytitle&gt;<br />
+&lt;!-- /.entry --&gt;&lt;/div &gt;<br />
+&lt;mt:Unless name="count" op="%" value="6"&gt;&lt;mt:If tag="MtEntriesCount" eq="$count"&gt;<br />
+&lt;!-- /.pager_section --&gt;&lt;/div&gt;<br />
+&lt;mt:Else&gt;<br />
+&lt;!-- /.pager_section --&gt;&lt;/div&gt;<br />
+&lt;div class="pager_section"&gt;<br />
+&lt;/mt:If&gt;&lt;/mt:Unless&gt;&lt;mtentriesFooter&gt;&lt;mt:If name="count" op="%" value="6"&gt;<br />
+&lt;!-- /.pager_section --&gt;&lt;/div&gt;<br />
+&lt;/mt:If&gt;&lt;/mtentriesFooter&gt;&lt;mtsetVar name="count" op="inc"&gt;&lt;/mtentries&gt;<br />
+&lt;!-- /.entries --&gt;&lt;/div&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;<br />
+</code></p>
