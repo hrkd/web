@@ -39,6 +39,7 @@
       <ul>
         <li><a href="https://github.com/hrkd" target="_blank">GitHub</a></li>
         <li><a href="https://twitter.com/_hrkd/" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/hrkd/" target="_blank">Instagram</a></li>
       </ul>
   </div>
 </template>
