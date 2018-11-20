@@ -5,8 +5,10 @@
       <router-link to="/about">About</router-link>
     </div-->
     <div id="content">
-      <h1>HRKD.NET</h1>
-    <router-view/>
+      <div id="wrapper">
+        <h1>HRKD.NET</h1>
+        <router-view/>
+      </div>
     </div>
   </div>
 </template>
@@ -63,82 +65,76 @@
   #app {
     width: 100%;
     height: 100%;
-    text-align: center;
     z-index: 2;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     position: fixed;
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #eee;
 
     #content {
-      width: 90vw;
-      padding-bottom: 2em;
-      @include mq_without_sp(){
-        width: 500px;
-      }
-      text-align: left;
-      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
 
-      a {
-        color:#FFC729;
-      }
-
-      h1 {
-        font-size: 36px;
-        &:after {
-          height: 5px;
-          width: 20px;
+      #wrapper {
+        width: 90vw;
+        padding-bottom: 2em;
+        @include mq_without_sp(){
+          width: 500px;
         }
-      }
+        text-align: left;
+        margin: 0 auto;
 
-      h2 {
-        font-size: 18px;
-        &:after {
-          height: 3px;
-          width: 10px;
+        a {
+          color:#FFC729;
         }
-      }
 
-      h3 {
-        font-size: 14px;
-        &:after {
-          display: none;
+        h1 {
+          font-size: 36px;
+          &:after {
+            height: 5px;
+            width: 20px;
+          }
         }
-      }
 
-      p,li {
-        color: #aaa;
-        font-size: 13px;
-        line-height: 1.8em;
-
-        span {
-          color: #666;
-          margin: 0 1em;
+        h2 {
+          font-size: 18px;
+          &:after {
+            height: 3px;
+            width: 10px;
+          }
         }
-      }
 
-      ul {
-        margin: 0 0 0 1em;
-        padding: 0;
-
-        li {
-          line-height: 1.6em;
-          margin-bottom: 0.6em;
+        h3 {
+          font-size: 14px;
+          &:after {
+            display: none;
+          }
         }
-      }
-    }
-  }
-  #nav {
-    padding: 30px;
-    a {
-      font-weight: bold;
-      color: #2c3e50;
-      &.router-link-exact-active {
-        color: #42b983;
+
+        p,li {
+          color: #aaa;
+          font-size: 13px;
+          line-height: 1.8em;
+
+          span {
+            color: #666;
+            margin: 0 1em;
+          }
+        }
+
+        ul {
+          margin: 0 0 0 1em;
+          padding: 0;
+
+          li {
+            line-height: 1.6em;
+            margin-bottom: 0.6em;
+          }
+        }
       }
     }
   }
