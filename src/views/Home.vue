@@ -23,12 +23,12 @@
       </ul>
     <h2>About me</h2>
     <p>
-      児玉広樹 Hiroki Kodama<br>
+      児玉広樹<br>
       北海道出身、東京在住のiOS/ウェブフロントエンドエンジニア。<br>
       Swift / iOS / TypeScript / React / Python / Django<br>
       <br>
       Hiroki Kodama<br>
-      Born in Hokkaido, live in Tokyo as a web front-end engineer. Javascript lover. Making web services with React.js and hobby app with React Native etc.<br>
+      Born in Hokkaido, live in Tokyo as a iOS / web front-end engineer.<br>
       <br>
       主な経歴<br>
       <ul>
