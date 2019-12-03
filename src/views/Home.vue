@@ -3,7 +3,7 @@
     <h2>Works</h2>
     <h3>2019</h3>
       <ul>
-        <li><a href="https://prty.jp/work/fuji-rock-19-by-softbank-5g" target="_blank">FUJI ROCK Festival 2019 App</a> | iOS development</li>
+        <li><a href="https://prty.jp/work/fuji-rock-19-by-softbank-5g" target="_blank">FUJI ROCK `19 by SoftBank 5G</a> | iOS development</li>
       </ul>
     <h3>2018</h3>
       <ul>
