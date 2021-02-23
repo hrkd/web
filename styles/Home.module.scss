@@ -1,0 +1,101 @@
+$mq-tb: 667px;
+@mixin mq_sp {
+  @media only screen and (max-width: $mq-tb) {
+    @content;
+  }
+}
+@mixin mq_without_sp {
+  @media only screen and (min-width: $mq-tb + 1) {
+    @content;
+  }
+}
+html {
+  background: #222222;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'PT Sans', sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 1pt;
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+  &:after {
+    content: '';
+    display: inline-block;
+    min-height: 2px;
+    min-width: 10px;
+    background: #ffc729;
+  }
+}
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #eee;
+  #content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    #wrapper {
+      width: 90vw;
+      padding-bottom: 2em;
+      @include mq_without_sp() {
+        width: 500px;
+      }
+      text-align: left;
+      margin: 0 auto;
+      a {
+        color: #ffc729;
+      }
+      h1 {
+        font-size: 36px;
+        &:after {
+          height: 5px;
+          width: 20px;
+        }
+      }
+      h2 {
+        font-size: 18px;
+        &:after {
+          height: 3px;
+          width: 10px;
+        }
+      }
+      h3 {
+        font-size: 14px;
+        &:after {
+          display: none;
+        }
+      }
+      p,
+      li {
+        color: #aaa;
+        font-size: 13px;
+        line-height: 1.8em;
+        span {
+          color: #666;
+          margin: 0 1em;
+        }
+      }
+      ul {
+        margin: 0 0 0 1em;
+        padding: 0;
+        li {
+          line-height: 1.6em;
+          margin-bottom: 0.6em;
+        }
+      }
+    }
+  }
+}
