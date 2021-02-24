@@ -9,6 +9,27 @@ export default function Home() {
           <h1>HRKD.NET</h1>
           <div class="home">
             <h2>Works</h2>
+            <h3>2020</h3>
+            <ul>
+              <li>
+                <a href="https://prty.jp/work/stadium-experiment" target="_blank">
+                  Stadium Experiment
+                </a>{' '}
+                | web front end development
+              </li>
+              <li>
+                <a href="https://prty.jp/work/softbank-arashi" target="_blank">
+                  嵐 「5Gバーチャル大合唱」
+                </a>{' '}
+                | web front end development
+              </li>
+              <li>
+                <a href="https://prty.jp/work/town-of-memories" target="_blank">
+                  NHK TOWN OF MEMORIES
+                </a>{' '}
+                | projection mapping, audio/light control
+              </li>
+            </ul>
             <h3>2019</h3>
             <ul>
               <li>
