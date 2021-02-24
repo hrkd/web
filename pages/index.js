@@ -15,7 +15,7 @@ export default function Home() {
                 <a href="https://prty.jp/work/stadium-experiment" target="_blank">
                   Stadium Experiment
                 </a>{' '}
-                | web front end development
+                | iOS development
               </li>
               <li>
                 <a href="https://prty.jp/work/softbank-arashi" target="_blank">
