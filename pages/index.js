@@ -12,7 +12,7 @@ export default function Home() {
           type: ["web front end development","webgl development"]
         },
       ]
-    }
+    },
     {
       year: "2021",
       cases: [
@@ -22,7 +22,7 @@ export default function Home() {
           type: ["iOS development"]
         },
       ]
-    }
+    },
     {
       year: "2020",
       cases: [
