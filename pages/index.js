@@ -2,6 +2,90 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  const works = [
+    {
+      year: "2022",
+      cases: [
+        {
+          title: "SKY GALLERY EXHIBITION SERIES vol.5『 目 [mé]』",
+          url: "https://www.shibuya-scramble-square.com/sky/me/",
+          type: ["web front end development","webgl development"]
+        },
+      ]
+    }
+    {
+      year: "2021",
+      cases: [
+        {
+          title: "FIMMIGRM film",
+          url: "https://apps.apple.com/jp/app/fimmigrm-film/id1542313824",
+          type: ["iOS development"]
+        },
+      ]
+    }
+    {
+      year: "2020",
+      cases: [
+        {
+          title: "Stadium Experiment",
+          url: "https://prty.jp/work/stadium-experiment",
+          type: ["iOS development"]
+        },
+        {
+          title: "嵐 「5Gバーチャル大合唱」",
+          url: "https://prty.jp/work/softbank-arashi",
+          type: ["web front end development"]
+        },
+        {
+          title: "NHK TOWN OF MEMORIES",
+          url: "https://prty.jp/work/town-of-memories",
+          type: ["projection mapping", "audio/light control"]
+        },
+      ]
+    }, {
+      year: "2019",
+      cases: [
+        {
+          title: "FUJI ROCK `19 by SoftBank 5G",
+          url: "https://prty.jp/work/fuji-rock-19-by-softbank-5g",
+          type: ["iOS development"]
+        },
+      ]
+    }, {
+      year: "2018",
+      cases: [
+        {
+          title: "VALU",
+          url: "https://valu.is",
+          type: ["web front end development"],
+          from: "2017"
+        },
+        {
+          title: "MATCH BOX",
+          url: "https://matchbox.work",
+          type: ["web front end development"],
+          from: "2017"
+        },
+        {
+          title: "STILL BY HAND",
+          url: "http://stillbyhand.jp/",
+          type: ["web front end / WordPress development"]
+        },
+        { title: "ChatBot (Google dialog flow) client" }
+      ]
+    },{
+      year: "2017",
+      cases: [
+        {title: "T-Shirt printing web service"},
+        {title: "Css frame work for ec-service"},
+      ]
+    },{
+      year: "2016",
+      cases: [
+        {title: "WordPress development for ec-service"},
+      ]
+    }
+  ]
   return (
     <div id="app">
       <div id="content">
@@ -9,67 +93,27 @@ export default function Home() {
           <h1>HRKD.NET</h1>
           <div class="home">
             <h2>Works</h2>
-            <h3>2020</h3>
-            <ul>
-              <li>
-                <a href="https://prty.jp/work/stadium-experiment" target="_blank">
-                  Stadium Experiment
-                </a>{' '}
-                | iOS development
-              </li>
-              <li>
-                <a href="https://prty.jp/work/softbank-arashi" target="_blank">
-                  嵐 「5Gバーチャル大合唱」
-                </a>{' '}
-                | web front end development
-              </li>
-              <li>
-                <a href="https://prty.jp/work/town-of-memories" target="_blank">
-                  NHK TOWN OF MEMORIES
-                </a>{' '}
-                | projection mapping, audio/light control
-              </li>
-            </ul>
-            <h3>2019</h3>
-            <ul>
-              <li>
-                <a href="https://prty.jp/work/fuji-rock-19-by-softbank-5g" target="_blank">
-                  FUJI ROCK `19 by SoftBank 5G
-                </a>{' '}
-                | iOS development
-              </li>
-            </ul>
-            <h3>2018</h3>
-            <ul>
-              <li>
-                <a href="https://valu.is" target="_blank">
-                  VALU
-                </a>{' '}
-                | web front end development<span>from 2017</span>
-              </li>
-              <li>
-                <a href="https://matchbox.work" target="_blank">
-                  MATCH BOX
-                </a>{' '}
-                | web front end development<span>from 2017</span>
-              </li>
-              <li>
-                <a href="http://stillbyhand.jp/" target="_blank">
-                  STILL BY HAND
-                </a>{' '}
-                | web front end / WordPress development
-              </li>
-              <li>ChatBot (Google dialog flow) client</li>
-            </ul>
-            <h3>2017</h3>
-            <ul>
-              <li>T-Shirt printing web service</li>
-              <li>Css frame work for ec-service</li>
-            </ul>
-            <h3>2016</h3>
-            <ul>
-              <li>WordPress development for ec-service</li>
-            </ul>
+            {works.map((work,index) => (
+              <>
+              <h3>{work.year}</h3>
+              <ul>
+                {work.cases.map((c,i)=>(
+                  <li key={i}>
+                    {c.url
+                      ?
+                      (<>
+                        <a href={c.url} target="_blank">{c.title}</a>{' '}
+                        | {c.type.join(', ')} {c.from?<span>from {c.from}</span>:null}
+                      </>)
+                      :
+                      (c.title)
+                    }
+                  </li>
+                ))}
+              </ul>
+              </>
+            ))}
+
             <h2>About me</h2>
             <p>
               児玉広樹
