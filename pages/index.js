@@ -9,7 +9,7 @@ export default function Home() {
         {
           title: "JR Kumamoto City AMAKUSA DIVE",
           url: "https://prty.jp/work/amakusa-dive",
-          type: ["technical direction","installation art)"]
+          type: ["technical direction","installation art"]
         },
         {
           title: "SKY GALLERY EXHIBITION SERIES vol.5『 目 [mé]』",
