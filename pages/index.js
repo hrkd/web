@@ -7,6 +7,11 @@ export default function Home() {
       year: "2022",
       cases: [
         {
+          title: "JR Kumamoto City AMAKUSA DIVE",
+          url: "https://prty.jp/work/amakusa-dive",
+          type: ["technical direction","installation art)"]
+        },
+        {
           title: "SKY GALLERY EXHIBITION SERIES vol.5『 目 [mé]』",
           url: "https://www.shibuya-scramble-square.com/sky/me/",
           type: ["web front end development","webgl development"]
