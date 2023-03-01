@@ -16,6 +16,17 @@ export default function Home() {
           url: "https://www.shibuya-scramble-square.com/sky/me/",
           type: ["web front end development","webgl development"]
         },
+        {
+          title: "GREEN BATON",
+          url: "https://www.goldwin.co.jp/greenbaton/",
+          type: ["web front end development"],
+        },
+        {
+          title: "MATCH BOX",
+          url: "https://matchbox.work",
+          type: ["web front end development"],
+          from: "2017"
+        },
       ]
     },
     {
@@ -62,12 +73,6 @@ export default function Home() {
         {
           title: "VALU",
           url: "https://valu.is",
-          type: ["web front end development"],
-          from: "2017"
-        },
-        {
-          title: "MATCH BOX",
-          url: "https://matchbox.work",
           type: ["web front end development"],
           from: "2017"
         },
