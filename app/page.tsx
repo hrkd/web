@@ -1,7 +1,10 @@
-import { getArticles, Article } from '@/lib/microcms';
+import { getArticles, getProfile, Article } from '@/lib/microcms';
 
 export default async function Home() {
-  const { contents: articles } = await getArticles();
+  const [{ contents: articles }, profile] = await Promise.all([
+    getArticles(),
+    getProfile(),
+  ]);
 
   // 年でグループ化
   const worksByYear = articles.reduce((acc, article) => {
@@ -51,65 +54,7 @@ export default async function Home() {
               </div>
             ))}
 
-            <h2>About me</h2>
-            <div>
-              <p>
-                児玉広樹
-                <br />
-                北海道出身、東京在住のiOS/ウェブフロントエンドエンジニア。
-                <br />
-                Swift / iOS / TypeScript / React
-              </p>
-              <p>
-                Hiroki Kodama
-                <br />
-                Born in Hokkaido, live in Tokyo as a iOS / web front-end engineer.
-              </p>
-              <p>主な経歴</p>
-              <ul>
-                <li>
-                  2019{' '}
-                  <a href="https://prty.jp/" target="_blank">
-                    株式会社PARTY
-                  </a>
-                  に入社
-                </li>
-                <li>
-                  2018{' '}
-                  <a href="https://prty.jp/" target="_blank">
-                    株式会社PARTY
-                  </a>
-                  と業務委託契約
-                </li>
-                <li>
-                  2017{' '}
-                  <a href="https://valu.is/company" target="_blank">
-                    株式会社VALU
-                  </a>{' '}
-                  と業務委託契約
-                </li>
-                <li>2013 東京に移住・フリーランスとして活動を開始</li>
-                <li>2006 札幌市の広告制作会社に入社</li>
-              </ul>
-            </div>
-            <h2>Activity</h2>
-            <ul>
-              <li>
-                <a href="https://github.com/hrkd" target="_blank">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/_hrkd/" target="_blank">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/hrkd/" target="_blank">
-                  Instagram
-                </a>
-              </li>
-            </ul>
+            <div dangerouslySetInnerHTML={{ __html: profile.introduction }} />
           </div>
         </div>
       </div>

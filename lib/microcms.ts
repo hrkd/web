@@ -30,3 +30,13 @@ export async function getArticles() {
     queries: { limit: 100 },
   });
 }
+
+export type Profile = {
+  introduction: string;
+};
+
+export async function getProfile() {
+  return await client.get<Profile>({
+    endpoint: 'profile',
+  });
+}
