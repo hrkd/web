@@ -1,98 +1,26 @@
-export default function Home() {
-  const works = [
-    {
-      year: "2022",
-      cases: [
-        {
-          title: "JR Kumamoto City AMAKUSA DIVE",
-          url: "https://prty.jp/work/amakusa-dive",
-          type: ["technical direction","installation art"]
-        },
-        {
-          title: "SKY GALLERY EXHIBITION SERIES vol.5『 目 [mé]』",
-          url: "https://www.shibuya-scramble-square.com/sky/me/",
-          type: ["web front end development","webgl development"]
-        },
-        {
-          title: "GREEN BATON",
-          url: "https://www.goldwin.co.jp/greenbaton/",
-          type: ["web front end development"],
-        },
-        {
-          title: "MATCH BOX",
-          url: "https://matchbox.work",
-          type: ["web front end development"],
-          from: "2017"
-        },
-      ]
-    },
-    {
-      year: "2021",
-      cases: [
-        {
-          title: "FIMMIGRM film",
-          url: "https://apps.apple.com/jp/app/fimmigrm-film/id1542313824",
-          type: ["iOS development"]
-        },
-      ]
-    },
-    {
-      year: "2020",
-      cases: [
-        {
-          title: "Stadium Experiment",
-          url: "https://prty.jp/work/stadium-experiment",
-          type: ["iOS development"]
-        },
-        {
-          title: "嵐 「5Gバーチャル大合唱」",
-          url: "https://prty.jp/work/softbank-arashi",
-          type: ["web front end development"]
-        },
-        {
-          title: "NHK TOWN OF MEMORIES",
-          url: "https://prty.jp/work/town-of-memories",
-          type: ["projection mapping", "audio/light control"]
-        },
-      ]
-    }, {
-      year: "2019",
-      cases: [
-        {
-          title: "FUJI ROCK `19 by SoftBank 5G",
-          url: "https://prty.jp/work/fuji-rock-19-by-softbank-5g",
-          type: ["iOS development"]
-        },
-      ]
-    }, {
-      year: "2018",
-      cases: [
-        {
-          title: "VALU",
-          url: "https://valu.is",
-          type: ["web front end development"],
-          from: "2017"
-        },
-        {
-          title: "STILL BY HAND",
-          url: "http://stillbyhand.jp/",
-          type: ["web front end / WordPress development"]
-        },
-        { title: "ChatBot (Google dialog flow) client" }
-      ]
-    },{
-      year: "2017",
-      cases: [
-        {title: "T-Shirt printing web service"},
-        {title: "Css frame work for ec-service"},
-      ]
-    },{
-      year: "2016",
-      cases: [
-        {title: "WordPress development for ec-service"},
-      ]
+import { getArticles, Article } from '@/lib/microcms';
+
+export default async function Home() {
+  const { contents: articles } = await getArticles();
+
+  // 年でグループ化
+  const worksByYear = articles.reduce((acc, article) => {
+    const year = article.year.toString();
+    if (!acc[year]) {
+      acc[year] = [];
     }
-  ]
+    acc[year].push(article);
+    return acc;
+  }, {} as Record<string, Article[]>);
+
+  // 年を降順でソート
+  const years = Object.keys(worksByYear).sort((a, b) => Number(b) - Number(a));
+
+  // 各年内のarticleを逆順に
+  years.forEach((year) => {
+    worksByYear[year].reverse();
+  });
+
   return (
     <div id="app">
       <div id="content">
@@ -100,43 +28,44 @@ export default function Home() {
           <h1>HRKD.NET</h1>
           <div className="home">
             <h2>Works</h2>
-            {works.map((work,index) => (
-              <>
-              <h3>{work.year}</h3>
-              <ul>
-                {work.cases.map((c,i)=>(
-                  <li key={i}>
-                    {c.url
-                      ?
-                      (<>
-                        <a href={c.url} target="_blank">{c.title}</a>{' '}
-                        | {c.type.join(', ')} {c.from?<span>from {c.from}</span>:null}
-                      </>)
-                      :
-                      (c.title)
-                    }
-                  </li>
-                ))}
-              </ul>
-              </>
+            {years.map((year) => (
+              <div key={year}>
+                <h3>{year}</h3>
+                <ul>
+                  {worksByYear[year].map((article) => (
+                    <li key={article.id}>
+                      {article.url ? (
+                        <>
+                          <a href={article.url} target="_blank">
+                            {article.title}
+                          </a>{' '}
+                          | {article.type.map((t) => t.title).join(', ')}
+                          {article.from ? <span>from {article.from}</span> : null}
+                        </>
+                      ) : (
+                        article.title
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
 
             <h2>About me</h2>
-            <p>
-              児玉広樹
-              <br />
-              北海道出身、東京在住のiOS/ウェブフロントエンドエンジニア。
-              <br />
-              Swift / iOS / TypeScript / React
-              <br />
-              <br />
-              Hiroki Kodama
-              <br />
-              Born in Hokkaido, live in Tokyo as a iOS / web front-end engineer.
-              <br />
-              <br />
-              主な経歴
-              <br />
+            <div>
+              <p>
+                児玉広樹
+                <br />
+                北海道出身、東京在住のiOS/ウェブフロントエンドエンジニア。
+                <br />
+                Swift / iOS / TypeScript / React
+              </p>
+              <p>
+                Hiroki Kodama
+                <br />
+                Born in Hokkaido, live in Tokyo as a iOS / web front-end engineer.
+              </p>
+              <p>主な経歴</p>
               <ul>
                 <li>
                   2019{' '}
@@ -162,7 +91,7 @@ export default function Home() {
                 <li>2013 東京に移住・フリーランスとして活動を開始</li>
                 <li>2006 札幌市の広告制作会社に入社</li>
               </ul>
-            </p>
+            </div>
             <h2>Activity</h2>
             <ul>
               <li>
