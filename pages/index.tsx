@@ -100,7 +100,7 @@ export default function Home() {
       <div id="content">
         <div id="wrapper">
           <h1>HRKD.NET</h1>
-          <div class="home">
+          <div className="home">
             <h2>Works</h2>
             {works.map((work,index) => (
               <>
