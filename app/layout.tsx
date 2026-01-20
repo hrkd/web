@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import ParticleBackground from '@/components/ParticleBackground';
 
 export default function RootLayout({
   children,
@@ -7,7 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <ParticleBackground />
+        {children}
+      </body>
     </html>
   );
 }
