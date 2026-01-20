@@ -28,6 +28,9 @@ export async function getArticles() {
   return await client.get<ArticlesResponse>({
     endpoint: 'articles',
     queries: { limit: 100 },
+    customRequestInit: {
+      next: { tags: ['microcms'] },
+    },
   });
 }
 
@@ -38,5 +41,8 @@ export type Profile = {
 export async function getProfile() {
   return await client.get<Profile>({
     endpoint: 'profile',
+    customRequestInit: {
+      next: { tags: ['microcms'] },
+    },
   });
 }
