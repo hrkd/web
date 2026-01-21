@@ -255,7 +255,7 @@ export default function ParticleBackground() {
 
   return (
     <>
-      <Leva collapsed={false} />
+      <Leva hidden={process.env.NODE_ENV === 'production'} collapsed={false} />
       <div
         style={{
           position: 'fixed',
