@@ -14,10 +14,10 @@ const STORAGE_KEY = 'particle-background-params';
 const DEFAULTS = {
   noise: {
     noiseEnabled: true,
-    noiseScale: 0.04,
-    noiseSpeed: 0.0017,
-    noiseStrength: 0.05,
-    noiseStrengthY: 0.041,
+    noiseScale: 0.021,
+    noiseSpeed: 0.0012,
+    noiseStrength: 0.01,
+    noiseStrengthY: 0.028,
     particleSize: 0.5,
     opacity: 0.2,
   },
