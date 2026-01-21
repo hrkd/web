@@ -8,12 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "@types/three": "^0.182.0",
+    "leva": "^0.10.1",
     "microcms-js-sdk": "^3.2.0",
     "next": "^16.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "^1.77.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "simplex-noise": "^4.0.3",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
