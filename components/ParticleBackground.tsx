@@ -10,6 +10,36 @@ import { useControls, button, Leva } from 'leva';
 const PARTICLE_COUNT = 3000;
 const STORAGE_KEY = 'particle-background-params';
 
+// SP/PC判定用のアスペクト比閾値
+const ASPECT_THRESHOLD = 1.0;
+// SP用のfieldHeight最大値
+const SP_FIELD_HEIGHT_MAX = 15;
+// PC用のfieldHeight
+const PC_FIELD_HEIGHT = 5;
+
+// 初回マウント時のアスペクト比を取得するhook（リサイズ非対応）
+function useWindowAspect() {
+  const [aspect, setAspect] = useState(1);
+
+  useEffect(() => {
+    setAspect(window.innerWidth / window.innerHeight);
+  }, []);
+
+  return aspect;
+}
+
+// アスペクト比に基づいて動的にfieldHeightを計算
+function calcDynamicFieldHeight(aspect: number): number {
+  if (aspect >= ASPECT_THRESHOLD) {
+    // PC（横長）: 固定値
+    return PC_FIELD_HEIGHT;
+  }
+  // SP（縦長）: アスペクト比が小さいほど大きく
+  // aspect=0.5 → 15, aspect=1.0 → 5
+  const t = aspect / ASPECT_THRESHOLD;
+  return PC_FIELD_HEIGHT + (SP_FIELD_HEIGHT_MAX - PC_FIELD_HEIGHT) * (1 - t);
+}
+
 // デフォルト値（コードに反映する際はここを更新）
 const DEFAULTS = {
   noise: {
@@ -23,7 +53,7 @@ const DEFAULTS = {
   },
   field: {
     fieldSize: 100,
-    fieldHeight: 5,
+    // fieldHeightはスクリーンサイズに応じて動的に計算される
   },
   camera: {
     cameraX: 95,
@@ -123,6 +153,10 @@ function Particles() {
   const timeRef = useRef(0);
   const circleTexture = useMemo(() => createCircleTexture(), []);
 
+  // スクリーンのアスペクト比を監視
+  const aspect = useWindowAspect();
+  const dynamicFieldHeight = calcDynamicFieldHeight(aspect);
+
   const { noiseEnabled, noiseScale, noiseSpeed, noiseStrength, noiseStrengthY, particleSize, opacity } =
     usePersistedControls('Noise', {
       noiseEnabled: { value: DEFAULTS.noise.noiseEnabled, label: 'Enable Noise' },
@@ -134,10 +168,12 @@ function Particles() {
       opacity: { value: DEFAULTS.noise.opacity, min: 0.1, max: 1, step: 0.1 },
     }, DEFAULTS.noise);
 
-  const { fieldSize, fieldHeight } = usePersistedControls('Field', {
+  const { fieldSize } = usePersistedControls('Field', {
     fieldSize: { value: DEFAULTS.field.fieldSize, min: 50, max: 300, step: 10 },
-    fieldHeight: { value: DEFAULTS.field.fieldHeight, min: 5, max: 100, step: 5 },
   }, DEFAULTS.field);
+
+  // 動的に計算されたfieldHeightを使用
+  const fieldHeight = dynamicFieldHeight;
 
   const { positions, originalPositions, sizes } = useMemo(() => {
     const positions = new Float32Array(PARTICLE_COUNT * 3);
