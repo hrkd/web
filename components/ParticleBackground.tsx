@@ -14,10 +14,10 @@ const STORAGE_KEY = 'particle-background-params';
 const DEFAULTS = {
   noise: {
     noiseEnabled: true,
-    noiseScale: 0.021,
-    noiseSpeed: 0.0012,
-    noiseStrength: 0.01,
-    noiseStrengthY: 0.028,
+    noiseScale: 0.025,
+    noiseSpeed: 0.002,
+    noiseStrength: 2.1,
+    noiseStrengthY: 5,
     particleSize: 0.5,
     opacity: 0.2,
   },
@@ -128,8 +128,8 @@ function Particles() {
       noiseEnabled: { value: DEFAULTS.noise.noiseEnabled, label: 'Enable Noise' },
       noiseScale: { value: DEFAULTS.noise.noiseScale, min: 0.001, max: 0.1, step: 0.001 },
       noiseSpeed: { value: DEFAULTS.noise.noiseSpeed, min: 0.0001, max: 0.002, step: 0.0001 },
-      noiseStrength: { value: DEFAULTS.noise.noiseStrength, min: 0.01, max: 0.2, step: 0.01 },
-      noiseStrengthY: { value: DEFAULTS.noise.noiseStrengthY, min: 0.001, max: 0.1, step: 0.001 },
+      noiseStrength: { value: DEFAULTS.noise.noiseStrength, min: 0.01, max: 5.0, step: 0.1 },
+      noiseStrengthY: { value: DEFAULTS.noise.noiseStrengthY, min: 0.01, max: 5.0, step: 0.1 },
       particleSize: { value: DEFAULTS.noise.particleSize, min: 0.5, max: 5, step: 0.1 },
       opacity: { value: DEFAULTS.noise.opacity, min: 0.1, max: 1, step: 0.1 },
     }, DEFAULTS.noise);
@@ -139,18 +139,29 @@ function Particles() {
     fieldHeight: { value: DEFAULTS.field.fieldHeight, min: 5, max: 100, step: 5 },
   }, DEFAULTS.field);
 
-  const { positions, sizes } = useMemo(() => {
+  const { positions, originalPositions, sizes } = useMemo(() => {
     const positions = new Float32Array(PARTICLE_COUNT * 3);
+    const originalPositions = new Float32Array(PARTICLE_COUNT * 3);
     const sizes = new Float32Array(PARTICLE_COUNT);
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * fieldSize;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * fieldHeight;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * fieldSize;
+      const x = (Math.random() - 0.5) * fieldSize;
+      const y = (Math.random() - 0.5) * fieldHeight;
+      const z = (Math.random() - 0.5) * fieldSize;
+
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+
+      // 初期位置を保持（波打ち動作の基準点）
+      originalPositions[i * 3] = x;
+      originalPositions[i * 3 + 1] = y;
+      originalPositions[i * 3 + 2] = z;
+
       sizes[i] = Math.random() * 2 + 0.5;
     }
 
-    return { positions, sizes };
+    return { positions, originalPositions, sizes };
   }, [fieldSize, fieldHeight]);
 
   useFrame(() => {
@@ -162,17 +173,19 @@ function Particles() {
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const i3 = i * 3;
-      const x = posArray[i3];
-      const y = posArray[i3 + 1];
-      const z = posArray[i3 + 2];
+      // 初期位置を基準にノイズを計算
+      const origX = originalPositions[i3];
+      const origY = originalPositions[i3 + 1];
+      const origZ = originalPositions[i3 + 2];
 
-      const noiseX = noise3D(x * noiseScale, y * noiseScale, timeRef.current * noiseSpeed);
-      const noiseY = noise3D(y * noiseScale, z * noiseScale, timeRef.current * noiseSpeed + 100);
-      const noiseZ = noise3D(z * noiseScale, x * noiseScale, timeRef.current * noiseSpeed + 200);
+      const noiseX = noise3D(origX * noiseScale, origY * noiseScale, timeRef.current * noiseSpeed);
+      const noiseY = noise3D(origY * noiseScale, origZ * noiseScale, timeRef.current * noiseSpeed + 100);
+      const noiseZ = noise3D(origZ * noiseScale, origX * noiseScale, timeRef.current * noiseSpeed + 200);
 
-      posArray[i3] += noiseX * noiseStrength;
-      posArray[i3 + 1] += noiseY * noiseStrengthY;
-      posArray[i3 + 2] += noiseZ * noiseStrength;
+      // 初期位置 + ノイズオフセット（累積しないので拡散しない）
+      posArray[i3] = origX + noiseX * noiseStrength;
+      posArray[i3 + 1] = origY + noiseY * noiseStrengthY;
+      posArray[i3 + 2] = origZ + noiseZ * noiseStrength;
     }
 
     positionAttr.needsUpdate = true;
