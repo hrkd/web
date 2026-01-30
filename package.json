@@ -3,9 +3,9 @@
   "version": "2.4.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port $((RANDOM % 10000 + 3000))",
     "build": "next build",
-    "start": "next start"
+    "start": "npm run dev"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
