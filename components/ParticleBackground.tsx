@@ -44,10 +44,10 @@ function calcDynamicFieldHeight(aspect: number): number {
 const DEFAULTS = {
   noise: {
     noiseEnabled: true,
-    noiseScale: 0.025,
+    noiseScale: 0.031,
     noiseSpeed: 0.002,
-    noiseStrength: 2.1,
-    noiseStrengthY: 5,
+    noiseStrength: 8.3,
+    noiseStrengthY: 15.9,
     particleSize: 0.5,
     opacity: 0.2,
   },
@@ -162,8 +162,8 @@ function Particles() {
       noiseEnabled: { value: DEFAULTS.noise.noiseEnabled, label: 'Enable Noise' },
       noiseScale: { value: DEFAULTS.noise.noiseScale, min: 0.001, max: 0.1, step: 0.001 },
       noiseSpeed: { value: DEFAULTS.noise.noiseSpeed, min: 0.0001, max: 0.002, step: 0.0001 },
-      noiseStrength: { value: DEFAULTS.noise.noiseStrength, min: 0.01, max: 5.0, step: 0.1 },
-      noiseStrengthY: { value: DEFAULTS.noise.noiseStrengthY, min: 0.01, max: 5.0, step: 0.1 },
+      noiseStrength: { value: DEFAULTS.noise.noiseStrength, min: 0.01, max: 100, step: 0.1 },
+      noiseStrengthY: { value: DEFAULTS.noise.noiseStrengthY, min: 0.01, max: 100, step: 0.1 },
       particleSize: { value: DEFAULTS.noise.particleSize, min: 0.5, max: 5, step: 0.1 },
       opacity: { value: DEFAULTS.noise.opacity, min: 0.1, max: 1, step: 0.1 },
     }, DEFAULTS.noise);
