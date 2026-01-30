@@ -13,7 +13,7 @@ const STORAGE_KEY = 'particle-background-params';
 // SP/PC判定用のアスペクト比閾値
 const ASPECT_THRESHOLD = 1.0;
 // SP用のfieldHeight最大値
-const SP_FIELD_HEIGHT_MAX = 30;
+const SP_FIELD_HEIGHT_MAX = 15;
 // PC用のfieldHeight
 const PC_FIELD_HEIGHT = 5;
 
@@ -40,7 +40,7 @@ function calcDynamicFieldHeight(aspect: number): number {
     return PC_FIELD_HEIGHT;
   }
   // SP（縦長）: アスペクト比が小さいほど大きく
-  // aspect=0.5 → 30, aspect=1.0 → 5
+  // aspect=0.5 → 15, aspect=1.0 → 5
   const t = aspect / ASPECT_THRESHOLD;
   return PC_FIELD_HEIGHT + (SP_FIELD_HEIGHT_MAX - PC_FIELD_HEIGHT) * (1 - t);
 }
