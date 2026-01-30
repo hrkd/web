@@ -17,17 +17,12 @@ const SP_FIELD_HEIGHT_MAX = 15;
 // PC用のfieldHeight
 const PC_FIELD_HEIGHT = 5;
 
-// ウィンドウサイズを監視するhook
+// 初回マウント時のアスペクト比を取得するhook（リサイズ非対応）
 function useWindowAspect() {
   const [aspect, setAspect] = useState(1);
 
   useEffect(() => {
-    const updateAspect = () => {
-      setAspect(window.innerWidth / window.innerHeight);
-    };
-    updateAspect();
-    window.addEventListener('resize', updateAspect);
-    return () => window.removeEventListener('resize', updateAspect);
+    setAspect(window.innerWidth / window.innerHeight);
   }, []);
 
   return aspect;
