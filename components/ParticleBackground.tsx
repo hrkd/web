@@ -19,12 +19,10 @@ const PC_FIELD_HEIGHT = 5;
 
 // 初回マウント時のアスペクト比を取得するhook（リサイズ非対応）
 function useWindowAspect() {
-  const [aspect, setAspect] = useState(1);
-
-  useEffect(() => {
-    setAspect(window.innerWidth / window.innerHeight);
-  }, []);
-
+  const [aspect] = useState(() => {
+    if (typeof window === 'undefined') return 1;
+    return window.innerWidth / window.innerHeight;
+  });
   return aspect;
 }
 
