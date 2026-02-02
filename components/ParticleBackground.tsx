@@ -68,6 +68,7 @@ const DEFAULTS = {
 
 function loadFromStorage() {
   if (typeof window === 'undefined') return null;
+  if (process.env.NODE_ENV === 'production') return null;
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved ? JSON.parse(saved) : null;
@@ -78,6 +79,7 @@ function loadFromStorage() {
 
 function saveToStorage(data: Record<string, unknown>) {
   if (typeof window === 'undefined') return;
+  if (process.env.NODE_ENV === 'production') return;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
