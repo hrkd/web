@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --port $((RANDOM % 10000 + 3000))",
     "build": "next build",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "capture-og": "npx tsx scripts/capture-og-bg.ts",
+    "postinstall": "npx playwright install chromium"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -26,6 +28,7 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "playwright": "^1.58.2",
     "typescript": "^5.0.0"
   }
 }
