@@ -10,6 +10,9 @@ export const size = {
 };
 export const contentType = 'image/png';
 
+// キャッシュバスター: この値を変更するとOGP画像のURLハッシュが更新される
+const OG_VERSION = '1.0.0';
+
 export default async function Image() {
   // PT Sans Bold Italic フォントを取得（TTF形式）
   const fontUrl = 'https://fonts.gstatic.com/s/ptsans/v18/jizdRExUiTo99u79D0e8fOytKA.ttf';
