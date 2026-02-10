@@ -27,6 +27,30 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## OGP画像の生成
+
+OGP画像はパーティクル背景のスクリーンショットとタイトルを動的に合成して生成されます。
+
+### 背景画像の更新方法
+
+1. 開発サーバーを起動
+```bash
+npm run dev
+```
+
+2. 表示されたポートを確認してキャプチャスクリプトを実行
+```bash
+npm run capture-og http://localhost:PORT
+```
+
+3. `public/og-bg.png` が更新される
+
+### 仕組み
+
+- `scripts/capture-og-bg.ts`: Playwrightで2倍サイズのスクリーンショットを撮影し、sharpで1200x630にリサイズ
+- `app/opengraph-image.tsx`: Next.js ImageResponseで背景画像とPT Sans Bold Italicタイトルを動的に合成
+- OGPメタタグはNext.jsが自動生成
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
